@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nuestra Historia</title>
+
+<style>
+
+body{
+
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg, #8b0000, #d4af37, #001f3f);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+padding:30px 0;
+color:white;
+
+}
+
+.contenedor{
+
+background:rgba(0,0,0,0.5);
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:90%;
+max-width:1200px;
+box-shadow:0 0 20px black;
+
+}
+
+h1{
+    color:#ffd700;
+}
+
+input{
+    padding:12px;
+    width:80%;
+    border-radius:10px;
+    border:none;
+    margin:10px;
+    text-align:center;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#d4af37;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:white;
+}
+
+#error{
+    color:#ffcccc;
+}
+
+#historia{
+    display:none;
+}
+
+.galeria{
+
+display:grid;
+grid-template-columns:repeat(3, minmax(250px, 1fr));
+gap:30px;
+width:100%;
+margin-top:30px;
+
+}
+
+
+.tarjeta{
+
+background:rgba(0,0,0,0.4);
+padding:15px;
+border-radius:20px;
+width:100%;
+box-sizing:border-box;
+
+}
+
+
+.galeria img{
+
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+border:3px solid #d4af37;
+
+}
+
+
+.titulo-foto{
+
+color:#ffd700;
+font-size:18px;
+margin-top:12px;
+font-weight:bold;
+
+}
+
+
+#recuerdos{
+
+margin-top:50px;
+width:100%;
+
+}
+
+
+#recuerdos h2{
+
+font-size:30px;
+margin-top:40px;
+margin-bottom:20px;
+
+}
+
+
+audio{
+
+width:90%;
+margin:20px auto;
+
+}
+
+
+.videos{
+
+display:grid;
+grid-template-columns:repeat(3, minmax(250px, 1fr));
+gap:30px;
+margin-top:30px;
+
+}
+
+
+.videos video{
+
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+border:3px solid #d4af37;
+
+}
+
+.historia-texto{
+
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:20px;
+margin:20px auto;
+font-size:18px;
+line-height:1.6;
+max-width:800px;
+
+}
+
+
+.versiculos{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:25px;
+
+}
+
+
+.versiculos p{
+
+background:rgba(212,175,55,0.25);
+padding:25px;
+border-radius:20px;
+font-size:18px;
+line-height:1.5;
+border:2px solid #d4af37;
+
+}
+
+
+.versiculos strong{
+
+color:#ffd700;
+
+}
+
+.portada{
+
+background:
+linear-gradient(
+rgba(0,0,0,0.45),
+rgba(0,0,0,0.45)
+),
+url("imagenes/fondo.jpg");
+
+background-size:cover;
+background-position:center;
+
+padding:60px 40px;
+border-radius:25px;
+
+text-align:center;
+
+width:70%;
+max-width:650px;
+
+box-shadow:0 0 30px black;
+
+}
+
+.portada h1{
+
+font-size:45px;
+animation: aparecer 2s;
+
+}
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+transform:scale(0.8);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+
+.portada p{
+
+font-size:22px;
+
+}
+
+.corazones span{
+
+position:fixed;
+font-size:30px;
+animation:flotar 5s infinite;
+
+}
+
+
+.corazones span:nth-child(1){
+left:10%;
+animation-delay:0s;
+}
+
+.corazones span:nth-child(2){
+left:30%;
+animation-delay:1s;
+}
+
+.corazones span:nth-child(3){
+left:50%;
+animation-delay:2s;
+}
+
+.corazones span:nth-child(4){
+left:70%;
+animation-delay:3s;
+}
+
+.corazones span:nth-child(5){
+left:90%;
+animation-delay:1.5s;
+}
+
+
+@keyframes flotar{
+
+0%{
+
+bottom:-50px;
+opacity:0;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+bottom:100%;
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="portada" id="portada">
+
+<div class="corazones">
+<span>❤️</span>
+<span>💛</span>
+<span>❤️</span>
+<span>✨</span>
+<span>❤️</span>
+</div>
+
+<h1>❤️ Nuestra Historia ❤️</h1>
+
+<h2>Marisol & Josué</h2>
+
+<p>
+Un camino lleno de momentos, recuerdos y amor.
+</p>
+
+<button onclick="mostrarLogin()">
+Entrar ✨
+</button>
+
+</div>
+
+<div class="contenedor" id="login" style="display:none;">
+
+<h1>❤️ Nuestra Historia ❤️</h1>
+
+<p>Ingresa la contraseña para entrar</p>
+
+<input type="password" id="clave" placeholder="Contraseña">
+
+<br>
+
+<button onclick="entrar()">Entrar</button>
+
+<p id="error"></p>
+
+</div>
+
+
+<div class="contenedor" id="historia">
+
+<h1>❤️ Marisol & Josué ❤️</h1>
+
+<h2>Nuestra Historia</h2>
+
+<p>
+Desde el 01 de abril del 2022 comenzó una historia llena de momentos especiales.
+</p>
+
+<h2 id="contador"></h2>
+
+<div class="recuerdo">
+    ✨ Cada recuerdo es una página de nuestra historia ✨
+</div>
+
+<br>
+
+<button onclick="mostrarRecuerdos()">
+Ver nuestros recuerdos ❤️
+</button>
+
+<div id="recuerdos" style="display:none;">
+
+<h2>📸 Nuestros momentos</h2>
+
+<p>
+Una colección de recuerdos que forman nuestra historia ❤️
+</p>
+
+
+<h2>🎵 Nuestra canción</h2>
+
+<audio controls>
+
+<source src="musica/cancion.mp3" type="audio/mpeg">
+
+Tu navegador no soporta audio.
+
+</audio>
+
+
+
+<div class="galeria">
+
+
+<div class="tarjeta">
+<img src="fotos/foto1.jpeg">
+<p class="titulo-foto">Nuestro primer recuerdo ❤️</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto2.jpeg">
+<p class="titulo-foto">Un momento especial ✨</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto3.jpeg">
+<p class="titulo-foto">Un día inolvidable 💛</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto7.jpeg">
+<p class="titulo-foto">Un recuerdo más 📸</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto8.jpeg">
+<p class="titulo-foto">Nuestra historia ❤️</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto9.jpeg">
+<p class="titulo-foto">Momentos juntos ✨</p>
+</div>
+
+
+<div class="tarjeta">
+<img src="fotos/foto13.jpeg">
+<p class="titulo-foto">Siempre adelante 💛</p>
+</div>
+
+
+</div>
+
+<h2>📖 Nuestra historia</h2>
+
+<div class="historia-texto">
+
+<p>
+Nuestra historia comenzó el 01 de abril del 2022,
+un día que marcó el inicio de muchos momentos especiales.
+Cada fotografía, cada sonrisa y cada recuerdo forman parte
+de este camino que seguimos construyendo juntos. ❤️
+</p>
+
+</div>
+
+<h2>✨ Versículos especiales ✨</h2>
+
+<div class="versiculos">
+
+<p>
+"Todo lo hizo hermoso en su tiempo."  
+<br>
+<strong>Eclesiastés 3:11</strong>
+</p>
+
+
+<p>
+"El amor es paciente, el amor es bondadoso."
+<br>
+<strong>1 Corintios 13:4</strong>
+</p>
+
+</div>
+
+<h2>🎥 Nuestros videos</h2>
+
+
+<div class="videos">
+
+<div class="tarjeta">
+
+<video controls>
+
+<source src="videos/video1.mp4" type="video/mp4">
+
+</video>
+
+<p class="titulo-foto">Nuestro video especial 🎬</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<video controls>
+
+<source src="videos/video2.mp4" type="video/mp4">
+
+</video>
+
+<p class="titulo-foto">Otro recuerdo ❤️</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<video controls>
+
+<source src="videos/video3.mp4" type="video/mp4">
+
+</video>
+
+<p class="titulo-foto">Un momento especial ✨</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<script>
+
+function entrar(){
+
+let contraseña = document.getElementById("clave").value;
+
+if(contraseña === "01042022"){
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("historia").style.display="block";
+
+contador();
+
+}else{
+
+document.getElementById("error").innerHTML="Contraseña incorrecta";
+
+}
+
+}
+
+
+
+function contador(){
+
+let inicio = new Date("2022-04-01");
+
+let hoy = new Date();
+
+let diferencia = hoy - inicio;
+
+let dias = Math.floor(diferencia/(1000*60*60*24));
+
+document.getElementById("contador").innerHTML =
+"❤️ Llevamos "+dias+" días juntos ❤️";
+
+}
+
+function mostrarRecuerdos(){
+
+let recuerdos = document.getElementById("recuerdos");
+
+if(recuerdos.style.display === "none"){
+
+recuerdos.style.display = "block";
+
+}else{
+
+recuerdos.style.display = "none";
+
+}
+
+}
+
+function mostrarLogin(){
+
+document.getElementById("portada").style.display="none";
+
+document.getElementById("login").style.display="block";
+
+}
+
+</script>
+
+
+</body>
+</html>
